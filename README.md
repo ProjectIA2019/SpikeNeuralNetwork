@@ -14,7 +14,11 @@ Man mano che la corrente dimuisce lo spike risulta essere meno presente.
 Quindi la corrente, man mano che aumenta, aumenta la fequenza di scarica(aumenta il numero dei potenziali d'azione del neurone) e, man mano che diminuisce(fino a riportare il potenziale di membrana a riposo, cioè -70mV), diminuisce la frequenza di scarica.
 
 Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il funzionamento del neurone al variare della corrente di innesco:
+
+
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino-trimmer-schema.gif"/>
+
+
 
 
 ## Programma in Prolog
