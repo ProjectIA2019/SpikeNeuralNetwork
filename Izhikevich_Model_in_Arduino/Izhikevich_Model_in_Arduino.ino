@@ -35,6 +35,7 @@ void loop()
   //Controllo sul bottone per vedere la modalità attivata
   if(digitalRead(BOTTON)==HIGH)
   {
+    tone(buzzerPIN, 500, 2); //Il buzzer suona
     mod += 1;
     if(mod > 9)
     {
@@ -138,7 +139,7 @@ void loop()
   //Controllo di picco per eventuale spike
   if(v > 30)
   {
-    tone(buzzerPIN, 1000, 500); //Il buzzer suona
+    tone(buzzerPIN, 1000, 2); //Il buzzer suona
     v = c;
     u += d;
   }
