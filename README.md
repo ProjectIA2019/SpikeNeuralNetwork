@@ -50,6 +50,52 @@ Mod Izhikevich's Spike Model
 
 ## Programma in Prolog
 
+        spike(ts,0.02,0.2,-65,6,14).
+
+        spike(ps,0.02,0.25,-65,6,0.5).
+
+        spike(tb,0.02,0.2,-50,2,15).
+
+        spike(pb,0.02,0.25,-55,0.05,0.6).
+
+        spike(mm,0.02,0.2,-55,4,10).
+
+        spike(sfa,0.01,0.2,-65,8,30).
+
+        spike(cuno,0.02,-0.1,-55,6,0).
+
+        spike(cdue,0.2,0.26,-65,0,0).
+
+        spike(sl,0.02,0.2,-65,6,7).
+
+        spike(reson,0.1,0.26,-60,-1,0).
+
+        spikeControl(Vf,Uf,C,D,NVf,NUf) :-
+            write(Vf),nl,
+            Vf >= 30,
+            write('Picco Vf: '),
+            write(Vf),
+            write(' mV'), nl,nl,nl,
+            NVf = C,
+            NUf = Uf+D,
+            break().
+
+        spikeControl(Vf,Uf,_,_,Vf,Uf).
+
+        izhik(Spike):-
+            start(Spike,-70,-20,0.02).
+
+        start(Spike,Vi,Ui,Tau):-
+            spike(Spike,A,B,C,D,I),
+            Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
+            Uf is Ui+(A*(B*Vf-Ui))*Tau,
+            spikeControl(Vf,Uf,C,D,NVf,NUf),
+            start(Spike,NVf,NUf,Tau).
+            
+Per lanciare il programma in prolog basta lanciare il predicato `izhik/1` come termine il nome del predicato. <br>
+Esempio:
+`izhink(ts)`
+
 
 
 ### Progetto di Intelligenza Artificiale
