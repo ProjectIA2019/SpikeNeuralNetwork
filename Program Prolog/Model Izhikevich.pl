@@ -36,7 +36,7 @@
  */
 
 
-spike(ts,0.02,0.2,-65,6,14).
+spike(ts,0.02,0.2,-65,6,700).
 
 spike(ps,0.02,0.25,-65,6,0.5).
 
@@ -58,45 +58,47 @@ spike(reson,0.1,0.26,-60,-1,0).
 
 spikehelp():-
     write("ELENCO FUNZIONI NEURONE:"), nl,
-    write(" 1. izhik(ts) -->  TS:  Tonic Spiking"), nl,
-    write(" 2. izhik(ps) -->  PS:  Phasic Spiking"), nl,
-    write(" 3. izhik(tb) -->  TB:  Tonic Bursting"), nl,
-    write(" 4. izhik(pb) -->  PB:  Phasic Bursting"), nl,
-    write(" 5. izhik(mm) -->  MM:  Mixed Mode"), nl,
-    write(" 6. izhik(sfa)-->  SFA: Spike Frequency Adaption"), nl,
-    write(" 7. izhik(cuno)->  C1:  Class 1"), nl,
-    write(" 8. izhik(cdue)->  C2:  Class 2"), nl,
-    write(" 9. izhik(sl) -->  SL:  Spike Latency"), nl,
-    write("10. izhik(r)  -->   R:   Resonator"), nl,
-    write("11. izhik(i)  -->   I:   Integrator"), nl,
-    write("12. izhik(rs) -->  RS:  Rebound Spike"), nl,
-    write("13. izhik(rb) -->  RB:  Rebound Burst"), nl,
-    write("14. izhik(tv) -->  TV:  Threshold Variability"), nl,
-    write("15. izhik(is) -->  IS:  Inhibition-induce Spiking"), nl,
-    write("16. izhik(ib) -->  IB:  Inhibition-induce Bursting"), nl,
+    write(" 1. snn(ts) -->  TS:  Tonic Spiking"), nl,
+    write(" 2. snn(ps) -->  PS:  Phasic Spiking"), nl,
+    write(" 3. snntb) -->  TB:  Tonic Bursting"), nl,
+    write(" 4. snn(pb) -->  PB:  Phasic Bursting"), nl,
+    write(" 5. snn(mm) -->  MM:  Mixed Mode"), nl,
+    write(" 6. snnfa)-->  SFA: Spike Frequency Adaption"), nl,
+    write(" 7. snn(cuno)->  C1:  Class 1"), nl,
+    write(" 8. snn(cdue)->  C2:  Class 2"), nl,
+    write(" 9. snn(sl) -->  SL:  Spike Latency"), nl,
+    write("10. snn(r)  -->   R:   Resonator"), nl,
+    write("11. snn(i)  -->   I:   Integrator"), nl,
+    write("12. snn(rs) -->  RS:  Rebound Spike"), nl,
+    write("13. snn(rb) -->  RB:  Rebound Burst"), nl,
+    write("14. snn(tv) -->  TV:  Threshold Variability"), nl,
+    write("15. snn(is) -->  IS:  Inhibition-induce Spiking"), nl,
+    write("16. snn(ib) -->  IB:  Inhibition-induce Bursting"), nl,
     nl.
+nSpike(nil).
 
 spikeControl(Vf,Uf,C,D,NVf,NUf) :-
-    write(Vf),nl,
+    write(Vf),nl,nl,
     Vf >= 30,
+    assert(nSpike(Vf)),
     write('Picco Vf: '),
     write(Vf),
-    write(' mV'), nl,nl,nl,
+    write(' mV'),nl,nl,nl,
     NVf = C,
-    NUf = Uf+D,
-    break().
-
+    NUf = Uf+D.
 spikeControl(Vf,Uf,_,_,Vf,Uf).
 
-izhik(Spike):-
-    start(Spike,-70,-20,0.02).
+snn(Spike):-
+    start(Spike,-70,-20,0,0.02).
 
-start(Spike,Vi,Ui,Tau):-
+start(_,_,_,Vf,_):-
+    nSpike(Vf).
+start(Spike,Vi,Ui,_,Tau):-
     spike(Spike,A,B,C,D,I),
     Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
     Uf is Ui+(A*(B*Vf-Ui))*Tau,
     spikeControl(Vf,Uf,C,D,NVf,NUf),
-    start(Spike,NVf,NUf,Tau).
+    start(Spike,NVf,NUf,Vf,Tau).
 
 
 
