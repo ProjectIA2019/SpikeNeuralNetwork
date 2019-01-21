@@ -1,8 +1,8 @@
 /*
  *    Pietro Rignanese & Polenta Andrea
- *    UniversitÃ  politecnica delle marche
+ *    Università politecnica delle marche
  *    Anno 2018/2019
- *    FacoltÃ  di Ingegneria informatica e dell'automazione
+ *    Facoltà di Ingegneria informatica e dell'automazione
  *
  */
 
@@ -75,30 +75,41 @@ spikehelp():-
     write("15. snn(is) -->  IS:  Inhibition-induce Spiking"), nl,
     write("16. snn(ib) -->  IB:  Inhibition-induce Bursting"), nl,
     nl.
+
+%Predicato per fallimento iniziale di start()
 nSpike(nil).
 
+% Conrtrollo per il raggiungemento del picco
+% da parte del poteziale di membrana
 spikeControl(Vf,Uf,C,D,NVf,NUf) :-
-    write(Vf),nl,nl,
     Vf >= 30,
     assert(nSpike(Vf)),
     write('Picco Vf: '),
     write(Vf),
-    write(' mV'),nl,nl,nl,
+    write(' mV'),nl,nl,nl,nl,
     NVf = C,
     NUf = Uf+D.
 spikeControl(Vf,Uf,_,_,Vf,Uf).
 
+%Lanciatore
 snn(Spike):-
-    start(Spike,-70,-20,0,0.02).
+    start(Spike,-70,-20,0,0.02,1).
 
-start(_,_,_,Vf,_):-
-    nSpike(Vf).
-start(Spike,Vi,Ui,_,Tau):-
+%Implementazione SNN
+start(_,_,_,Vf,_,_):-
+    nSpike(Vf),
+    retractall(nSpike(_)).
+
+start(Spike,Vi,Ui,_,Tau,Iter):-
     spike(Spike,A,B,C,D,I),
     Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
     Uf is Ui+(A*(B*Vf-Ui))*Tau,
+    write('Impulso n°'),write(Iter),nl,nl,
+    write('Potenziale di membrana ==> '),write(Vf),nl,nl,
+    write('Recupero di membrana ==> '),write(Uf),nl,nl,nl,nl,nl,
     spikeControl(Vf,Uf,C,D,NVf,NUf),
-    start(Spike,NVf,NUf,Vf,Tau).
+    Itera is Iter + 1,
+    start(Spike,NVf,NUf,Vf,Tau,Itera).
 
 
 
