@@ -1,7 +1,6 @@
 # SpikeNeuralNetwork
-<div align='right'>
-    <img src"http://www.swi-prolog.org/icons/swipl.png"/>
-</div>
+<img src"http://www.swi-prolog.org/icons/swipl.png"/>
+
 ## Neurone
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/1024px-Neuron.svg.png"/>
 
