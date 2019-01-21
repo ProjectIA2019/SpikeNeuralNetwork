@@ -1,8 +1,8 @@
 /*
  *    Pietro Rignanese & Polenta Andrea
- *    Università politecnica delle marche
+ *    UniversitÃ  politecnica delle marche
  *    Anno 2018/2019
- *    Facoltà di Ingegneria informatica e dell'automazione
+ *    FacoltÃ  di Ingegneria informatica e dell'automazione
  *
  */
 
@@ -63,7 +63,7 @@ spikehelp():-
     write(" 3. snntb) -->  TB:  Tonic Bursting"), nl,
     write(" 4. snn(pb) -->  PB:  Phasic Bursting"), nl,
     write(" 5. snn(mm) -->  MM:  Mixed Mode"), nl,
-    write(" 6. snnfa)-->  SFA: Spike Frequency Adaption"), nl,
+    write(" 6. snn(fa)-->  SFA: Spike Frequency Adaption"), nl,
     write(" 7. snn(cuno)->  C1:  Class 1"), nl,
     write(" 8. snn(cdue)->  C2:  Class 2"), nl,
     write(" 9. snn(sl) -->  SL:  Spike Latency"), nl,
