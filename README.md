@@ -1,6 +1,4 @@
 # SpikeNeuralNetwork
-<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/logos/Prolog.png"/>
-
 ## Neurone
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/1024px-Neuron.svg.png"/>
 
