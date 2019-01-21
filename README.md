@@ -70,29 +70,43 @@ Mod Izhikevich's Spike Model
 
         spike(reson,0.1,0.26,-60,-1,0).
 
+        %Predicato per fallimento iniziale di start()
+        
+        nSpike(nil).
+
+        % Controllo per il raggiungemento del picco
+        % da parte del poteziale di membrana
         spikeControl(Vf,Uf,C,D,NVf,NUf) :-
-            write(Vf),nl,
             Vf >= 30,
+            assert(nSpike(Vf)),
             write('Picco Vf: '),
             write(Vf),
-            write(' mV'), nl,nl,nl,
+            write(' mV'),nl,nl,nl,nl,
             NVf = C,
-            NUf = Uf+D,
-            break().
-
+            NUf = Uf+D.
         spikeControl(Vf,Uf,_,_,Vf,Uf).
 
-        izhik(Spike):-
-            start(Spike,-70,-20,0.02).
+        %Lanciatore
+        snn(Spike):-
+            start(Spike,-70,-20,0,0.02,1).
 
-        start(Spike,Vi,Ui,Tau):-
+        %Implementazione SNN
+        start(_,_,_,Vf,_,_):-
+            nSpike(Vf),
+            retractall(nSpike(_)).
+
+        start(Spike,Vi,Ui,_,Tau,Iter):-
             spike(Spike,A,B,C,D,I),
             Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
             Uf is Ui+(A*(B*Vf-Ui))*Tau,
+            write('Impulso n°'),write(Iter),nl,nl,
+            write('Potenziale di membrana ==> '),write(Vf),nl,nl,
+            write('Recupero di membrana ==> '),write(Uf),nl,nl,nl,nl,nl,
             spikeControl(Vf,Uf,C,D,NVf,NUf),
-            start(Spike,NVf,NUf,Tau).
-            
-Per lanciare il programma in prolog basta lanciare il predicato `izhik/1` come termine il nome del predicato. <br>
+            Itera is Iter + 1,
+            start(Spike,NVf,NUf,Vf,Tau,Itera).
+
+Per lanciare il programma in prolog basta lanciare il predicato `snn/1` come termine il nome del predicato. <br>
 Esempio:
 `snn(ts)`.<br>
 
