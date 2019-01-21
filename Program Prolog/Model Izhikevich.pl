@@ -1,8 +1,8 @@
 /*
  *    Pietro Rignanese & Polenta Andrea
- *    Università politecnica delle marche
+ *    UniversitÃ  politecnica delle marche
  *    Anno 2018/2019
- *    Facoltà di Ingegneria informatica e dell'automazione
+ *    FacoltÃ  di Ingegneria informatica e dell'automazione
  *
  */
 
@@ -36,7 +36,7 @@
  */
 
 
-spike(ts,0.02,0.2,-65,6,700).
+spike(ts,0.02,0.2,-65,6,14).
 
 spike(ps,0.02,0.25,-65,6,0.5).
 
@@ -104,7 +104,7 @@ start(Spike,Vi,Ui,_,Tau,Iter):-
     spike(Spike,A,B,C,D,I),
     Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
     Uf is Ui+(A*(B*Vf-Ui))*Tau,
-    write('Impulso n°'),write(Iter),nl,nl,
+    write('Impulso nÂ°'),write(Iter),nl,nl,
     write('Potenziale di membrana ==> '),write(Vf),nl,nl,
     write('Recupero di membrana ==> '),write(Uf),nl,nl,nl,nl,nl,
     spikeControl(Vf,Uf,C,D,NVf,NUf),
