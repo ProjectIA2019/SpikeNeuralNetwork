@@ -44,6 +44,7 @@ Mod Izhikevich's Spike Model
     //     -0.02      -1      -60     8        80 ;...    % inhibition-induced spiking
     //     -0.026     -1      -45     0        80];       % inhibition-induced bursting
 
+## [Video](https://www.youtube.com/watch?v=hH13wbqk_TM)
 
 
 
