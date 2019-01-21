@@ -94,7 +94,7 @@ Mod Izhikevich's Spike Model
             
 Per lanciare il programma in prolog basta lanciare il predicato `izhik/1` come termine il nome del predicato. <br>
 Esempio:
-`izhik(ts)`.<br>
+`snn(ts)`.<br>
 
 Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `spikehelp().`.
 
