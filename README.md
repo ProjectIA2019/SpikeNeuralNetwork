@@ -71,10 +71,9 @@ Mod Izhikevich's Spike Model
         spike(reson,0.1,0.26,-60,-1,0).
 
         %Predicato per fallimento iniziale di start()
-        
         nSpike(nil).
 
-        % Controllo per il raggiungemento del picco
+        % Conrtrollo per il raggiungemento del picco
         % da parte del poteziale di membrana
         spikeControl(Vf,Uf,C,D,NVf,NUf) :-
             Vf >= 30,
@@ -105,7 +104,7 @@ Mod Izhikevich's Spike Model
             spikeControl(Vf,Uf,C,D,NVf,NUf),
             Itera is Iter + 1,
             start(Spike,NVf,NUf,Vf,Tau,Itera).
-
+            
 Per lanciare il programma in prolog basta lanciare il predicato `snn/1` come termine il nome del predicato. <br>
 Esempio:
 `snn(ts)`.<br>
