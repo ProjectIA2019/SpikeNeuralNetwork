@@ -3,7 +3,7 @@ int value = 0;            //Valore del potenziometro
 float tau = 0.02;         //Quantizzazione
 float t = 0;              //Tempo
 float v = -70;            //Potenziale membrana a riposo -70mV
-int u = -20;              //Ripristino membrana -20mV
+float u = -20;              //Ripristino membrana -20mV
 
 int BOTTON_SPIKE = 2;     //Bottone settaggio modalità di spike
 int BOTTON_POT = 6;       //Bottone per disattivare o attivare l'uso del potenziometro
