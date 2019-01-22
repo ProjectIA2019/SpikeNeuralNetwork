@@ -24,7 +24,7 @@ Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il fu
 
 ## [Video Arduino](https://www.youtube.com/watch?v=hH13wbqk_TM)
 
-Mod Izhikevich's Spike Model
+### Mod Izhikevich's Spike Model
 
     // From Iziekevich.org - see also https://www.izhikevich.org/publications/figure1.pdf:
     //      0.02      0.2     -65      6       14 ;...    % tonic spiking
