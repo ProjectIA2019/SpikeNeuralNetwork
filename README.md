@@ -6,7 +6,9 @@
 [Qui](https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Izhikevich_Model_in_Arduino/Izhikevich_Model_in_Arduino.ino) è presente il programma in arduino, in cui attraverso:<br>
 1. N° 1 potenziometro andiamo a modificare la corrente inniettata(corrente di sinapsi)in moda da vedere l'andamento su un'oscilloscopio digitale, realizzato da [Baden Lab](https://github.com/BadenLab), in cui vediamo l'andamento della corrente(in verde) e quello del potenziale di membrana(in rosso) man mano che la corrente di sinapsi aumenta e diminuisce; <br>
 2. N° 1 bottone per settera le varie modalità di spike, che vanno a differire in base a diversi valori; <br>
+3. N° 1 bottone per abilitare/disabilitare il potenziometro come corrente iniettiva; <br>
 3. N° 1 buzzer per far emettere un suono acustico ogni volta che si presenta uno spike.<br>
+4. N° 2 led per verificare se il potenziometro è attivo[LED VERDE acceso] e in che modalità ci troviamo(inibitoria[LED ROSSO spento] o eccitatoria[LED ROSSO acceso])
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Screen/screen%20oscilloscopio.png"/>
 
@@ -18,7 +20,7 @@ Quindi la corrente, man mano che aumenta, aumenta la fequenza di scarica(aumenta
 Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il funzionamento del neurone al variare della corrente di innesco:
 
 
-<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/IMG_20190119_142220(2).png"/>
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/arduino-spike.png"/>
 
 Mod Izhikevich's Spike Model
 
