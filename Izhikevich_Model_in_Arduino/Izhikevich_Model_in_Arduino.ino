@@ -7,6 +7,7 @@ int u = -20; //Ripristino membrana -20mV
 
 int BOTTON = 2; //Bottone settaffio modalità di spike
 int mod = 0;
+int LED = 5; //LED
 
 int buzzerPIN = 4; //Buzzer per identificare lo spike
 
@@ -26,6 +27,8 @@ void setup()
   mod = 0;
 
   pinMode(buzzerPIN, OUTPUT);
+  pinMode(LED, OUTPUT);
+  digitalWrite(LED,HIGH);
 }
 
 void loop()
@@ -37,11 +40,22 @@ void loop()
   {
     tone(buzzerPIN, 500, 2); //Il buzzer suona
     mod += 1;
-    if(mod > 9)
+    if(mod > 11)
     {
       mod = 0;
     }
+
+    //Accendiamo il led quando sono presenti modi eccitatori e lo spegniamo quando i modi sono inibitori
+    if(mod > 9)
+    {
+      digitalWrite(LED,LOW);
+    }
+    else
+    {
+      digitalWrite(LED,HIGH);
+    }
   }
+
   if(mod == 0)
   {
     Serial.println("Tonic Spiking");
@@ -122,6 +136,22 @@ void loop()
     c = -60; //Valore di ripristino dopo il picco v
     d = -1; //Ripristino di u dopo il picco
   }
+  if(mod == 10)
+  {
+    Serial.println("Inhibition-induced spiking");
+    a = -0.02;
+    b = -1;
+    c = -60;
+    d = 8;
+  }
+  if(mod == 11)
+  {
+    Serial.println("Inhibition-induced bursting");
+    a = -0.026;
+    b = -1;
+    c = -45;
+    d = 0;
+  }
 //--------------------------------------------------------------
   
   value = analogRead(potentiometerPin) - 512; // Lettura valore potenziometro
@@ -131,9 +161,11 @@ void loop()
   u +=  tau * a * (b * v - u);
   //------------------------------------------------------------
 
-  OutputStr += v;
+  OutputStr += v; //Linea verde oscilloscopio
   OutputStr += ", ";
-  OutputStr += value;
+  OutputStr += value; //Linea rossa oscilloscopio
+  OutputStr += ", ";
+  OutputStr += u; //Linea blu oscilloscopio
   Serial.println(OutputStr); // Stampo valori calcolati e li proietto sull'oscilloscopio
 
   //Controllo di picco per eventuale spike
@@ -144,9 +176,9 @@ void loop()
     u += d;
   }
   //Controllo per non farlo scendere sotto la soglia di "Potenziale di membrana a riposo"
-  if(v < -75)
+  if(v < -70)
   {
-    v = -75;
+    v = -70;
   }
   
   t = t + tau;
