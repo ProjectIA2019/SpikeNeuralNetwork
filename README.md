@@ -118,7 +118,67 @@ Esempio:
 
 Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `spikehelp().`.
 
+### Catena di neuroni
 
+        %Spiking neural network
+        s('Freya','Odino').
+        s('Odino','Thor').
+        s('Thor','Freya').
+
+        %Predicato per fallimento iniziale di start()
+        nSpike(nil).
+
+        % Conrtrollo per il raggiungemento del picco
+        % da parte del poteziale di membrana
+        spikeControl(Neuron,Vf,Uf,C,D,Nlist,Spike) :-
+            Vf >= 30,
+            assert(nSpike(Vf)),
+            write('_____________________________________________________________'),nl,
+            write('Registrato picco del neurone '),write(Neuron),nl,nl,
+            write('Potenziale di membrana ==> '),write(Vf),write(' mV'),nl,
+            write('Recupero di membrana   ==> '),write(Uf),write(' mV'),nl,
+            write('_____________________________________________________________'),
+            nl,nl,nl,nl,
+            sleep(2),
+            NVf = C,
+            NUf is Uf+D,
+            listUpdate(Neuron-[NVf,NUf],Nlist,Newlist),
+            s(Neuron,NeuronS),
+            start(Spike,NeuronS,Newlist,0.02).
+        spikeControl(_,_,_,_,_,_,_).
+
+        % Controllo sulla lista dei neuroni se il neurone considerato è presente
+        listControl(Neuron,List,Nlist):-
+            \+member(Neuron-_,List),
+            append([Neuron-[-70,-20]],List,Nlist).
+        listControl(_,List,List).
+
+        %Aggiornamento della Lista dei neuroni
+        listUpdate(Neuron-Pot,List,NewList):-
+            delete(List,Neuron-_,Nlist),
+            append([Neuron-Pot],Nlist,NewList).
+
+        %Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
+        searchNeuron(Neuron,[Neuron-[NV,NU]|_],NV,NU).
+        searchNeuron(Neuron,[_|T],NV,NU):-
+            searchNeuron(Neuron,T,NV,NU).
+
+        %Lanciatore
+        snn(Spike,InitNeuron):-
+            start(Spike,InitNeuron,[],0.02).
+
+        start(Spike,Neuron,Nlist,Tau):-
+            spike(Spike,A,B,C,D,I),
+            listControl(Neuron,Nlist,Newlist1),
+            searchNeuron(Neuron,Newlist1,Vi,Ui),
+            Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
+            Uf is Ui+(A*(B*Vf-Ui))*Tau,
+            listUpdate(Neuron-[Vf,Uf],Newlist1,Newlist2),
+            spikeControl(Neuron,Vf,Uf,C,D,Newlist2,Spike),
+            start(Spike,'Freya',Newlist2,Tau).
+
+In questa modalità i neuroni sono collegati a catena chiusa e il primo neurone della catena manda al suo successivo l'impulso elettrico ricevuto solamente quando avviene lo spike.
+In questo caso la Spike Neural Network non considera i neuroni fino a che non avviene lo spike.
 
 ### Progetto di Intelligenza Artificiale
 Pietro Rignanese & Andrea Polenta 
