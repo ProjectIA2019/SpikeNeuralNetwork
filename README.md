@@ -118,7 +118,7 @@ Esempio:
 
 Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `spikehelp().`.
 
-### Catena di neuroni
+### Catena di neuroni "Dormienti"
 
         %Spiking neural network
         s('Freya','Odino').
@@ -179,6 +179,81 @@ Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `s
 
 In questa modalità i neuroni sono collegati a catena chiusa e il primo neurone della catena manda al suo successivo l'impulso elettrico ricevuto solamente quando avviene lo spike.
 In questo caso la Spike Neural Network non considera i neuroni fino a che non avviene lo spike.
+
+
+### Catena di neuroni "Svegli"
+
+        %Spiking neural network
+        s('Freya','Odino').
+        s('Odino','Thor').
+        s('Thor','Freya').
+
+        % Conrtrollo per il raggiungemento del picco
+        % da parte del poteziale di membrana
+        spikeControl(Neuron,I,Vf,Uf,C,D,Nlist) :-
+            Vf >= 30,
+            write('_____________________________________________________________'),nl,
+            write('Registrato picco del neurone '),write(Neuron),nl,nl,
+            write('Potenziale di membrana ==> '),write(Vf),write(' mV'),nl,
+            write('Recupero di membrana   ==> '),write(Uf),write(' mV'),nl,
+            write('_____________________________________________________________'),
+            nl,nl,nl,nl,
+            %sleep(2),
+            NVf = C,
+            NUf is Uf+D,
+            listUpdate(Neuron-[NVf,NUf],Nlist,Newlist),
+            s(Neuron,NeuronS),
+            start(NeuronS,Newlist,I).
+        spikeControl(Neuron,_,_,_,_,_,Nlist):-
+            s(Neuron,NeuronS),
+            NeuronS \= 'Freya',
+            start(NeuronS,Nlist,0).
+        spikeControl(_,_,_,_,_,_,_).
+
+        % Controllo sulla lista dei neuroni se il neurone considerato è presente
+        listControl(Neuron,List,Nlist):-
+            \+member(Neuron-_,List),
+            append([Neuron-[-70,-20]],List,Nlist).
+        listControl(_,List,List).
+
+        %Aggiornamento della Lista dei neuroni
+        listUpdate(Neuron-Pot,List,NewList):-
+            delete(List,Neuron-_,Nlist),
+            append([Neuron-Pot],Nlist,NewList).
+
+        %Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
+        searchNeuron(Neuron,[Neuron-[NV,NU]|_],NV,NU).
+        searchNeuron(Neuron,[_|T],NV,NU):-
+            searchNeuron(Neuron,T,NV,NU).
+
+        %Lanciatore
+        snn(Spike,I,Tau,InitNeuron):-
+            retractall(tau(_)),
+            retractall(initI(_)),
+            retractall(kSpike(_)),
+            retractall(initNeuron(_)),
+            assert(initNeuron(InitNeuron)),
+            assert(initI(I)),
+            assert(kSpike(Spike)),
+            assert(tau(Tau)),
+            start(InitNeuron,[],I).
+
+        start(Neuron,Nlist,I):-
+            kSpike(Spike),
+            spike(Spike,A,B,C,D),
+            listControl(Neuron,Nlist,Newlist1),
+            searchNeuron(Neuron,Newlist1,Vi,Ui),
+            tau(Tau),
+            Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
+            Uf is Ui+(A*(B*Vf-Ui))*Tau,
+            listUpdate(Neuron-[Vf,Uf],Newlist1,Newlist2),
+            spikeControl(Neuron,I,Vf,Uf,C,D,Newlist2),
+            initNeuron(InitN),
+            initI(InitI),
+            start(InitN,Newlist2,InitI).
+            
+            
+________________________________________________________________________________
 
 ### Progetto di Intelligenza Artificiale
 Pietro Rignanese & Andrea Polenta 
