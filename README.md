@@ -24,7 +24,7 @@ Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il fu
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/arduino-spike.png"/>
 
-## [Video Arduino](https://www.youtube.com/watch?v=hH13wbqk_TM)
+#### [Video Arduino](https://www.youtube.com/watch?v=hH13wbqk_TM)
 
 ### Mod Izhikevich's Spike Model
 
@@ -50,6 +50,7 @@ Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il fu
     //     -0.02      -1      -60     8        80 ;...    % inhibition-induced spiking
     //     -0.026     -1      -45     0        80];       % inhibition-induced bursting
 
+___________________________________________________________________________________________________________
 
 
 ## Programma in Prolog
