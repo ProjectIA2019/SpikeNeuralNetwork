@@ -27,9 +27,13 @@ Quindi la corrente, man mano che aumenta, aumenta la fequenza di scarica(aumenta
 Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il funzionamento del neurone al variare della corrente di innesco:
 
 
-<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/arduino-spike.png"/>
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino_Spike_Neuron.png"/>
 
 #### [Video Arduino](https://www.youtube.com/watch?v=hH13wbqk_TM)
+
+### Catena di 2 neuroni
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino_Spike_Neural_network.png"/>
 
 ### Mod Izhikevich's Spike Model
 
