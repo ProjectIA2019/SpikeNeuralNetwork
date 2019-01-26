@@ -270,6 +270,14 @@ In questo caso la Spike Neural Network non considera i neuroni fino a che non av
             start(InitN,Newlist2,InitI).
             
             
+#### Plotting
+
+##### Tonic Spiking
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TS/Plotting_TS_Tau002_I14.png"/>
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TS/Plotting_TS_Tau002_I80.png"/>
+            
 ________________________________________________________________________________
 
 ### Progetto di Intelligenza Artificiale
