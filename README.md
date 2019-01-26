@@ -277,6 +277,12 @@ In questo caso la Spike Neural Network non considera i neuroni fino a che non av
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TS/Plotting_TS_Tau002_I14.png"/>
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TS/Plotting_TS_Tau002_I80.png"/>
+
+##### Tonic Bursting
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TB/Plotting_TB_Tau002_I15.png"/>
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TB/Plotting_TB_Tau002_I50.png"/>
             
 ________________________________________________________________________________
 
