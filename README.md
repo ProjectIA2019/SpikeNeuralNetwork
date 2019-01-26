@@ -1,5 +1,19 @@
 # Spike Neural Network
-## Neurone
+
+## Indice
+* <a href="ancora-neurone">Neurone</a>
+* <a href="ancora-progarduino">Programma Arduino</a>
+    * <a href="ancora-singneuron">Singolo Neurone</a>
+    * <a href="ancora-dupneuron">Coppia di neuroni</a>
+ * <a href="ancora-modizhikevich">Modello Izhikevich</a>
+ * <a href="ancora-progprolog">Programma Prolog</a>
+    * <a href="ancora-prologsing">Neurone Singolo</a>
+    * <a href="ancora-prologtre">Catena Neuroni</a>
+         * <a href="ancora-prologtredorm">Neuroni "Dormienti"</a>
+         * <a href="ancora-prologtrewake">Neuroni "Svegli"</a>
+            * <a href="ancora-plotwake">Plotting</a>
+
+## <a name="ancora-neurone"></a>Neurone
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/1024px-Neuron.svg.png"/>
 
 
@@ -7,9 +21,9 @@ In questo progetto di inettligenza artificiale si è implementato un neurone con
 
 _____________________________________________________________________________________________
 
-## Programma In Arduino
+## <a name="ancora-progarduino"></a>Programma In Arduino
 
-### Singolo Neurone
+### <a name="ancora-singneuron"></a>Singolo Neurone
 [Qui](https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Izhikevich_Model_in_Arduino/Izhikevich_Model_in_Arduino.ino) è presente il programma in arduino, in cui attraverso:<br>
 1. N° 1 potenziometro andiamo a modificare la corrente inniettata(corrente di sinapsi)in moda da vedere l'andamento su un'oscilloscopio digitale, realizzato da [Baden Lab](https://github.com/BadenLab), in cui vediamo l'andamento della corrente(in verde) e quello del potenziale di membrana(in rosso) man mano che la corrente di sinapsi aumenta e diminuisce; <br>
 2. N° 1 bottone per settera le varie modalità di spike, che vanno a differire in base a diversi valori; <br>
@@ -31,11 +45,11 @@ Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il fu
 
 #### [Video Arduino](https://www.youtube.com/watch?v=hH13wbqk_TM)
 
-### Catena di 2 neuroni
+### <a name="ancora-dupneuron"></a>Catena di 2 neuroni
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino_Spike_Neural_network.png"/>
 
-### Mod Izhikevich's Spike Model
+### <a name="ancora-modizhikevich"></a>Mod Izhikevich's Spike Model
 
     // From Iziekevich.org - see also https://www.izhikevich.org/publications/figure1.pdf:
     //      0.02      0.2     -65      6       14 ;...    % tonic spiking
@@ -62,9 +76,9 @@ Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il fu
 ___________________________________________________________________________________________________________
 
 
-## Programma in Prolog
+## <a name="ancora-progprolog"></a>Programma in Prolog
 
-### Singolo Neurone
+### <a name="ancora-prologsing"></a>Singolo Neurone
 
         spike(ts,0.02,0.2,-65,6,14).
 
@@ -127,7 +141,7 @@ Esempio:
 
 Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `spikehelp().`.
 
-### Spike Neural Network a 3 neuroni
+### <a name="ancora-prologtre"></a>Spike Neural Network a 3 neuroni
 In questa parte si sono implementati 3 neuroni colegati tra di loro per srtudiarne il funzionamento.
 Si è previsto due modalità di funzionamento:
 * Catena di neuroni "dormienti":
@@ -135,7 +149,7 @@ Si è previsto due modalità di funzionamento:
 * Catena di neuroni "svegli":
     * Un insieme di neuroni collegati tra di loro risultano sempre attivi ma a corrente 0(zero) fino a che non ricevono l'impulso di spike dal neurone precedente... e solamente in quel momento ricevono un impulso di corrente pari alla corrente di sinapsi del neurone precendente.
 
-### Catena di neuroni "Dormienti"
+### <a name="ancora-prologtredor"></a>Catena di neuroni "Dormienti"
 
         %Spiking neural network
         s('Freya','Odino').
@@ -198,7 +212,7 @@ In questa modalità i neuroni sono collegati a catena chiusa e il primo neurone 
 In questo caso la Spike Neural Network non considera i neuroni fino a che non avviene lo spike.
 
 
-### Catena di neuroni "Svegli"
+### <a name="ancora-prologtrewake"></a>Catena di neuroni "Svegli"
 
         %Spiking neural network
         s('Freya','Odino').
@@ -270,7 +284,7 @@ In questo caso la Spike Neural Network non considera i neuroni fino a che non av
             start(InitN,Newlist2,InitI).
             
             
-#### Plotting
+#### <a name="ancora-plotwake"></a>Plotting
 Di seguito alcuni modelli di neuroni plottate con excel attraverso i dati elaborati dal Prolog
 
 ##### Tonic Spiking
