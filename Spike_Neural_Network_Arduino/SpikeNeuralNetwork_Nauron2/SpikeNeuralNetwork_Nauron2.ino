@@ -1,3 +1,11 @@
+/*
+  Pietro Rignanese & Andrea Polenta
+  Spike Neural Network in Arduino
+  Gennaio 2019
+  Inetlligenza artificiale
+  UNIVPM
+*/
+
 float a = 0.02;           //Scala temporale di u
 float b = 0.2;            //Sensibilità di recupero
 int c = -65;              //Valore di ripristino dopo il picco v
