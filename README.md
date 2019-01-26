@@ -2,6 +2,11 @@
 ## Neurone
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/1024px-Neuron.svg.png"/>
 
+
+In questo progetto di inettligenza artificiale si è implementato un neurone con il modello di Izhikevich, in Arduino e SWI-Prolog, e successivamente si è creata una Spike Neural Network(una catena di neuroni collegato tra loro) per studiare il funzionamento di quest'ultima.
+
+_____________________________________________________________________________________________
+
 ## Programma In Arduino
 
 ### Singolo Neurone
@@ -117,6 +122,14 @@ Esempio:
 `snn(ts)`.<br>
 
 Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `spikehelp().`.
+
+### Spike Neural Network a 3 neuroni
+In questa parte si sono implementati 3 neuroni colegati tra di loro per srtudiarne il funzionamento.
+Si è previsto due modalità di funzionamento:
+* Catena di neuroni "dormienti":
+    * Un insieme di neuroni collegati tra di loro risultano inesistenti fino a che non ricevono un impulso di spike dal neurone precedente, un pò come se stessero in "ibernazione" fino a quel momento e vengono chiamati in causa solamente quando ricevono l'impulso.
+* Catena di neuroni "svegli":
+    * Un insieme di neuroni collegati tra di loro risultano sempre attivi ma a corrente 0(zero) fino a che non ricevono l'impulso di spike dal neurone precedente... e solamente in quel momento ricevono un impulso di corrente pari alla corrente di sinapsi del neurone precendente.
 
 ### Catena di neuroni "Dormienti"
 
