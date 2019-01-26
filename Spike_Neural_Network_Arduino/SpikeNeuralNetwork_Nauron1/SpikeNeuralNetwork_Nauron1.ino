@@ -1,3 +1,11 @@
+/*
+  Pietro Rignanese & Andrea Polenta
+  Spike Neural Network in Arduino
+  Gennaio 2019
+  Inetlligenza artificiale
+  UNIVPM
+*/
+
 int potentiometerPin = 0; //Pin Potenziometro A0
 int value = 0;            //Valore del potenziometro
 float tau = 0.2;          //Quantizzazione
