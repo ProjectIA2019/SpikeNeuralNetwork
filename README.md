@@ -271,6 +271,7 @@ In questo caso la Spike Neural Network non considera i neuroni fino a che non av
             
             
 #### Plotting
+Di seguito alcuni modelli di neuroni plottate con excel attraverso i dati elaborati dal Prolog
 
 ##### Tonic Spiking
 
