@@ -151,6 +151,8 @@ Si è previsto due modalità di funzionamento:
 
 ### <a name="ancora-prologtredor"></a>Catena di neuroni "Dormienti"
 
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Schema%20Neuron%20Sleep.png"/>
+
         %Spiking neural network
         s('Freya','Odino').
         s('Odino','Thor').
@@ -213,6 +215,8 @@ In questo caso la Spike Neural Network non considera i neuroni fino a che non av
 
 
 ### <a name="ancora-prologtrewake"></a>Catena di neuroni "Svegli"
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Schema%20Neuron%20Wake.png"/>
 
         %Spiking neural network
         s('Freya','Odino').
