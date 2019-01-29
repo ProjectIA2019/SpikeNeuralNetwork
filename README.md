@@ -1,22 +1,18 @@
 # Spike Neural Network
 
 ## <a name="ancora-indice"></a>Indice
-* <a href="#ancora-neurone">Neurone</a>
-__________________________________________________
-* <a href="#ancora-progarduino">Programma Arduino</a>
+* <a href="#ancora-neurone">1. Neurone</a>
+* <a href="#ancora-progarduino">2. Programma Arduino</a>
     * <a href="#ancora-singneuron">Singolo Neurone</a>
     * <a href="#ancora-dupneuron">Coppia di neuroni</a>
-___________________________________________________
- * <a href="#ancora-modizhikevich">Modello Izhikevich</a>
-____________________________________________________
- * <a href="#ancora-progprolog">Programma Prolog</a>
+ * <a href="#ancora-modizhikevich">3. Modello Izhikevich</a>
+ * <a href="#ancora-progprolog">4. Programma Prolog</a>
     * <a href="#ancora-prologsing">Neurone Singolo</a>
     * <a href="#ancora-prologtre">Catena Neuroni</a>
          * <a href="#ancora-prologtredorm">Neuroni "Dormienti"</a>
             * <a href="#ancora-plotsleep">Plotting</a>
          * <a href="#ancora-prologtrewake">Neuroni "Svegli"</a>
             * <a href="#ancora-plotwake">Plotting</a>
-_____________________________________________________
 
 ## <a name="ancora-neurone"></a>Neurone
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/1024px-Neuron.svg.png"/>
