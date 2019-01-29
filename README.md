@@ -1,6 +1,6 @@
 # Spike Neural Network
 
-## Indice
+## <a name="ancora-indice"></a>Indice
 * <a href="#ancora-neurone">Neurone</a>
 * <a href="#ancora-progarduino">Programma Arduino</a>
     * <a href="#ancora-singneuron">Singolo Neurone</a>
@@ -304,6 +304,8 @@ Di seguito alcuni modelli di neuroni plottate con excel attraverso i dati elabor
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TB/Plotting_TB_Tau002_I50.png"/>
             
 ________________________________________________________________________________
+
+#### <a href="#ancora-indice">Torna all'indice</a>
 
 ### Progetto di Intelligenza Artificiale
 Pietro Rignanese & Andrea Polenta 
