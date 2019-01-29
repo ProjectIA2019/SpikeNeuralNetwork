@@ -218,6 +218,7 @@ In questo caso la Spike Neural Network non considera i neuroni fino a che non av
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STS/Plotting_STS_Tau002_I14.png"/>
 
+_______________________________________________________________________________________________________
 
 ### <a name="ancora-prologtrewake"></a>Catena di neuroni "Svegli"
 
