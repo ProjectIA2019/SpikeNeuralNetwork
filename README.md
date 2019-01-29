@@ -10,6 +10,7 @@
     * <a href="#ancora-prologsing">Neurone Singolo</a>
     * <a href="#ancora-prologtre">Catena Neuroni</a>
          * <a href="#ancora-prologtredorm">Neuroni "Dormienti"</a>
+            * <a href="#ancora-plotsleep">Plotting</a>
          * <a href="#ancora-prologtrewake">Neuroni "Svegli"</a>
             * <a href="#ancora-plotwake">Plotting</a>
 
@@ -212,6 +213,10 @@ Si è previsto due modalità di funzionamento:
 
 In questa modalità i neuroni sono collegati a catena chiusa e il primo neurone della catena manda al suo successivo l'impulso elettrico ricevuto solamente quando avviene lo spike.
 In questo caso la Spike Neural Network non considera i neuroni fino a che non avviene lo spike.
+
+#### <a name="ancora-plotsleep"></a>Plotting
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STS/Plotting_STS_Tau002_I14.png"/>
 
 
 ### <a name="ancora-prologtrewake"></a>Catena di neuroni "Svegli"
