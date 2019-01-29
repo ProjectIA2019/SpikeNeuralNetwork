@@ -149,7 +149,7 @@ Si è previsto due modalità di funzionamento:
 * Catena di neuroni "svegli":
     * Un insieme di neuroni collegati tra di loro risultano sempre attivi ma a corrente 0(zero) fino a che non ricevono l'impulso di spike dal neurone precedente... e solamente in quel momento ricevono un impulso di corrente pari alla corrente di sinapsi del neurone precendente.
 
-### <a name="ancora-prologtredor"></a>Catena di neuroni "Dormienti"
+### <a name="ancora-prologtredorm"></a>Catena di neuroni "Dormienti"
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Schema%20Neuron%20Sleep.png"/>
 
