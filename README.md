@@ -4,14 +4,14 @@
 * <a href="#ancora-neurone">1. Neurone</a>
 * <a href="#ancora-progarduino">2. Programma Arduino</a>
     * <a href="#ancora-singneuron">Singolo Neurone</a>
-    * <a href="#ancora-dupneuron">Coppia di neuroni</a>
+    * <a href="#ancora-dupneuron">Catena Neuroni: coppia</a>
  * <a href="#ancora-modizhikevich">3. Modello Izhikevich</a>
  * <a href="#ancora-progprolog">4. Programma Prolog</a>
-    * <a href="#ancora-prologsing">Neurone Singolo</a>
+    * <a href="#ancora-prologsing">Singolo Neurone</a>
     * <a href="#ancora-prologtre">Catena Neuroni</a>
-         * <a href="#ancora-prologtredorm">Neuroni "Dormienti"</a>
+         * <a href="#ancora-prologtredorm">Neuroni "Sleepy"</a>
             * <a href="#ancora-plotsleep">Plotting</a>
-         * <a href="#ancora-prologtrewake">Neuroni "Svegli"</a>
+         * <a href="#ancora-prologtrewake">Neuroni "Awake"</a>
             * <a href="#ancora-plotwake">Plotting</a>
 
 ## <a name="ancora-neurone"></a>Neurone
