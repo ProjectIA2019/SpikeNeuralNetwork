@@ -56,7 +56,7 @@ spike(sl,0.02,0.2,-65,6,7).
 
 spike(reson,0.1,0.26,-60,-1,0).
 
-spikehelp():-
+spikehelp:-
     write("ELENCO FUNZIONI NEURONE:"), nl,
     write(" 1. snn(ts) -->  TS:  Tonic Spiking"), nl,
     write(" 2. snn(ps) -->  PS:  Phasic Spiking"), nl,
