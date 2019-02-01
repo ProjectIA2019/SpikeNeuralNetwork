@@ -1,8 +1,8 @@
 /*
  *    Pietro Rignanese & Polenta Andrea
- *    Università politecnica delle marche
+ *    UniversitÃ  politecnica delle marche
  *    Anno 2018/2019
- *    Facoltà di Ingegneria informatica e dell'automazione
+ *    FacoltÃ  di Ingegneria informatica e dell'automazione
  *
  */
 
@@ -58,7 +58,7 @@ spike(sl,0.02,0.2,-65,6).
 spike(reson,0.1,0.26,-60,-1).
 
 %Info sugli spike
-spikehelp():-
+spikehelp:-
     write("ELENCO FUNZIONI NEURONE:"), nl,
     write(" 1. snn(ts) -->  TS:  Tonic Spiking"), nl,
     write(" 2. snn(ps) -->  PS:  Phasic Spiking"), nl,
@@ -108,7 +108,7 @@ spikeControl(Neuron,Vf,Uf,C,D,Nlist) :-
     start(NeuronS,Newlist).
 spikeControl(_,_,_,_,_,_).
 
-% Controllo sulla lista dei neuroni se il neurone considerato � presente
+% Controllo sulla lista dei neuroni se il neurone considerato è presente
 listControl(Neuron,List,Nlist):-
     \+member(Neuron-_,List),
     append([Neuron-[-70,-20]],List,Nlist).
