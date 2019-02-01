@@ -68,11 +68,13 @@ Così come si è realizzato lo schema per un neurone, lo si è realizzato per un
 In questa piccola Spiking Neural Network vediamo due Arduino, dove ognuno dei quali rappresenta un neurone, collegati gtra loro a rappresentare una catena.
 Il neurone 1 manda dei segnali al neurone successivo solamente quuando avviene lo spike, quindi, il neurone 2 calcola continuamente il potenziale di membrana nel tempo con corrente che sarà identica alla corrente di sinapsi del neurone precedente, quando quest'ultimo arriva allo spike, altrimenti sarà colcolato con corrente 0.
 
-Nel modello di arduino del secondo neurone vediamo un bottone e un led: il led identifico lo spike del neurone precedente e il bottone aumenta la quantizzazione, per poter vedere prima lo spike.
+Nel modello di arduino del secondo neurone vediamo un bottone e un led: il led identifica lo spike del neurone precedente e il bottone aumenta la quantizzazione(aumenta il valore di tau), per poter vedere prima lo spike.
 
 ____________________________________________________________________________________________
 
 ### <a name="ancora-modizhikevich"></a>Mod Izhikevich's Spike Model
+
+Tipologie di neuroni del modelloi di Izhikevich
 
     // From Iziekevich.org - see also https://www.izhikevich.org/publications/figure1.pdf:
     //      0.02      0.2     -65      6       14 ;...    % tonic spiking
@@ -158,11 +160,11 @@ ________________________________________________________________________________
             Itera is Iter + 1,
             start(Spike,NVf,NUf,Vf,Tau,Itera).
             
-Per lanciare il programma in prolog basta lanciare il predicato `snn/1` come termine il nome del predicato. <br>
+Per far partire il programma in prolog basta lanciare il predicato `snn/1` come termine il nome del predicato. <br>
 Esempio:
 `snn(ts)`.<br>
 
-Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `spikehelp().`.
+Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `spikehelp.`.
 
 ### <a name="ancora-prologtre"></a>Spike Neural Network a 3 neuroni
 In questa parte si sono implementati 3 neuroni colegati tra di loro per srtudiarne il funzionamento.
