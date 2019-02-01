@@ -479,9 +479,9 @@ Di seguito alcuni modelli di neuroni plottate con excel attraverso i dati elabor
             
 ________________________________________________________________________________
 
-### <a href="#ancora-conclusioni"></a>Conclusioni
+### <a name="ancora-conclusioni"></a>Conclusioni
 
-I Neuroni "Spleeèy" sono da escludere perchè non rispecchaino a pieno il comportamento del neurone biologico.
+I Neuroni "Spleepy" sono da escludere perchè non rispecchaino a pieno il comportamento del neurone biologico.
 
 Come possiamo notare, anche dall’esperienza in Arduino, quando la corrente indotta aumenta si ha un aumento della frequenza di scarica, cioè il numero degli spike tende ad aumentare considerando la quantizzazione(Tau) inalterata.
 Ogni tipologia di neurone corrisponde ad un andamento di tipo grafico, che varia in base ai valori assegnati, ma la corrente indotta è qualcosa che fa variare fortemente la funzione nella sua frequenza. 
