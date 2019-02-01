@@ -105,6 +105,8 @@ ________________________________________________________________________________
 
 ### <a name="ancora-prologsing"></a>Singolo Neurone
 
+Di seguito il cuore del programma fatto in SWI-Prolog, dove si è implementato un singolo neurone seguendo i modelli di Izhikevich
+
         spike(ts,0.02,0.2,-65,6,14).
 
         spike(ps,0.02,0.25,-65,6,0.5).
@@ -167,7 +169,7 @@ Esempio:
 Per avere una guida su tutti i predicati che è possibile lanciare, eseguire: `spikehelp.`.
 
 ### <a name="ancora-prologtre"></a>Spike Neural Network a 3 neuroni
-In questa parte si sono implementati 3 neuroni colegati tra di loro per srtudiarne il funzionamento.
+In questa parte si sono implementati 3 neuroni colegati(a catena) tra di loro per studiarne il funzionamento.
 Si è previsto due modalità di funzionamento:
 * Catena di neuroni "dormienti":
     * Un insieme di neuroni collegati tra di loro risultano inesistenti fino a che non ricevono un impulso di spike dal neurone precedente, un pò come se stessero in "ibernazione" fino a quel momento e vengono chiamati in causa solamente quando ricevono l'impulso.
@@ -178,67 +180,139 @@ Si è previsto due modalità di funzionamento:
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Schema%20Neuron%20Sleep.png"/>
 
-        %Spiking neural network
-        s('Freya','Odino').
-        s('Odino','Thor').
-        s('Thor','Freya').
+         spike(ts,0.02,0.2,-65,6).
 
-        %Predicato per fallimento iniziale di start()
-        nSpike(nil).
+         spike(ps,0.02,0.25,-65,6).
 
-        % Conrtrollo per il raggiungemento del picco
-        % da parte del poteziale di membrana
-        spikeControl(Neuron,Vf,Uf,C,D,Nlist,Spike) :-
-            Vf >= 30,
-            assert(nSpike(Vf)),
-            write('_____________________________________________________________'),nl,
-            write('Registrato picco del neurone '),write(Neuron),nl,nl,
-            write('Potenziale di membrana ==> '),write(Vf),write(' mV'),nl,
-            write('Recupero di membrana   ==> '),write(Uf),write(' mV'),nl,
-            write('_____________________________________________________________'),
-            nl,nl,nl,nl,
-            sleep(2),
-            NVf = C,
-            NUf is Uf+D,
-            listUpdate(Neuron-[NVf,NUf],Nlist,Newlist),
-            s(Neuron,NeuronS),
-            start(Spike,NeuronS,Newlist,0.02).
-        spikeControl(_,_,_,_,_,_,_).
+         spike(tb,0.02,0.2,-50,2).
 
-        % Controllo sulla lista dei neuroni se il neurone considerato è presente
-        listControl(Neuron,List,Nlist):-
-            \+member(Neuron-_,List),
-            append([Neuron-[-70,-20]],List,Nlist).
-        listControl(_,List,List).
+         spike(pb,0.02,0.25,-55,0.05).
 
-        %Aggiornamento della Lista dei neuroni
-        listUpdate(Neuron-Pot,List,NewList):-
-            delete(List,Neuron-_,Nlist),
-            append([Neuron-Pot],Nlist,NewList).
+         spike(mm,0.02,0.2,-55,4).
 
-        %Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
-        searchNeuron(Neuron,[Neuron-[NV,NU]|_],NV,NU).
-        searchNeuron(Neuron,[_|T],NV,NU):-
-            searchNeuron(Neuron,T,NV,NU).
+         spike(sfa,0.01,0.2,-65,8).
 
-        %Lanciatore
-        snn(Spike,InitNeuron):-
-            start(Spike,InitNeuron,[],0.02).
+         spike(cuno,0.02,-0.1,-55,6).
 
-        start(Spike,Neuron,Nlist,Tau):-
-            spike(Spike,A,B,C,D,I),
-            listControl(Neuron,Nlist,Newlist1),
-            searchNeuron(Neuron,Newlist1,Vi,Ui),
-            Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
-            Uf is Ui+(A*(B*Vf-Ui))*Tau,
-            listUpdate(Neuron-[Vf,Uf],Newlist1,Newlist2),
-            spikeControl(Neuron,Vf,Uf,C,D,Newlist2,Spike),
-            start(Spike,'Freya',Newlist2,Tau).
+         spike(cdue,0.2,0.26,-65,0).
+
+         spike(sl,0.02,0.2,-65,6).
+
+         spike(reson,0.1,0.26,-60,-1).
+
+         %Spiking neural network
+         s('Freya','Odino').
+         s('Odino','Thor').
+         s('Thor','Freya').
+
+         %Inizializzazione lista dei neuroni presenti sulla SNN
+         initNrnsList(InitNeuron,InitList,List):-
+             listControl(InitNeuron,InitList,NewList),
+             InitList \= NewList,
+             s(InitNeuron,PostNeuron),
+             initNrnsList(PostNeuron,NewList,List).
+         initNrnsList(_,List,List).
+
+         % Conrtrollo per il raggiungemento del picco
+         % da parte del poteziale di membrana
+         spikeControl(Neuron,Vf,Uf,C,D,Nlist) :-
+             Vf >= 30,
+             write('_____________________________________________________________'),nl,
+             write('Registrato picco del neurone '),write(Neuron),nl,nl,
+             write('Potenziale di membrana ==> '),write(Vf),write(' mV'),nl,
+             write('Recupero di membrana   ==> '),write(Uf),write(' mV'),nl,
+             write('_____________________________________________________________'),
+             nl,nl,nl,nl,
+             NVf = C,
+             NUf is Uf+D,
+             listUpdate(Neuron-[NVf,NUf],Nlist,Newlist),
+             s(Neuron,NeuronS),
+             start(NeuronS,Newlist).
+         spikeControl(_,_,_,_,_,_).
+
+         % Controllo sulla lista dei neuroni se il neurone considerato è presente
+         listControl(Neuron,List,Nlist):-
+             \+member(Neuron-_,List),
+             append([Neuron-[-70,-20]],List,Nlist).
+         listControl(_,List,List).
+
+         %Aggiornamento della Lista dei neuroni
+         listUpdate(Neuron-Pot,List,NewList):-
+             delete(List,Neuron-_,Nlist),
+             append([Neuron-Pot],Nlist,NewList).
+
+         %Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
+         searchNeuron(Neuron,[Neuron-[NV,NU]|_],NV,NU).
+         searchNeuron(Neuron,[_|T],NV,NU):-
+             searchNeuron(Neuron,T,NV,NU).
+
+         %Controllo per l'inserimento dei valori di Vf in un file
+         controlFile(X,[_-[NV,_]|Tail]):-
+             write(X,NV),
+             write(X, " , "),
+             controlFile(X,Tail).
+         controlFile(_,_).
+
+         % Funzione di sart che impone una corrente costante in ingresso ad un
+         % certo neurone, eccitandolo e attivando tutti i processi della SNN
+         start(Neuron,NrnsList):-
+             kSpike(Spike),
+             spike(Spike,A,B,C,D),
+             searchNeuron(Neuron,NrnsList,Vi,Ui),
+             initI(I),
+             tau(Tau),
+             Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
+             Uf is Ui+(A*(B*Vf-Ui))*Tau,
+             listUpdate(Neuron-[Vf,Uf],NrnsList,Newlist),
+             initFile(File),
+             open(File,append,X),
+             sort(0,@<,Newlist,OrderList),
+             controlFile(X,OrderList),
+             nl(X),
+             close(X),
+             spikeControl(Neuron,Vf,Uf,C,D,Newlist),
+             initNeuron(InitNeuron),
+             start(InitNeuron,Newlist).
+
+
+         %Lanciatore
+         %
+         %       Spike --> Tipologia di spike da lanciare
+         %           I --> Corrente di sinapsi
+         %         Tau --> Campionamento
+         %  InitNeuron --> Neurone iniziale
+         %        File --> File di destinazione su dove inserire i valori
+         %
+
+         snn(Spike,I,Tau,InitNeuron,File):-
+             retractall(tau(_)),
+             retractall(initI(_)),
+             retractall(kSpike(_)),
+             retractall(initNeuron(_)),
+             retractall(initFile(_)),
+             assert(initNeuron(InitNeuron)),
+             assert(initI(I)),
+             assert(kSpike(Spike)),
+             assert(tau(Tau)),
+             assert(initFile(File)),
+             initNrnsList(InitNeuron,[],List),
+             start(InitNeuron,List).
 
 In questa modalità i neuroni sono collegati a catena chiusa e il primo neurone della catena manda al suo successivo l'impulso elettrico ricevuto solamente quando avviene lo spike.
 In questo caso la Spike Neural Network non considera i neuroni fino a che non avviene lo spike.
 
+Per far partire questo programma basta lanciare il predicato `snn/5`, in cui i 5 argomenti identificano:
+* Tipologia di neurone che si vuol studiare
+* Corrente di sinapsi di partenza del primo neurone
+* Campionamento(Tau)
+* Neurone da cui partire: essendo una catena chiusa di neuroni, è possibile partire da uno dei 3.
+* File dove salvare i dati per poi essere plottati
+
+In questo caso si sono salvati i dati in file `.txt` e successivamente elaborati con Excel per ottenere i garfici.
+
 #### <a name="ancora-plotsleep"></a>Plotting
+
+Di seguito i grafici dei neuroni "Sleepy"
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STS/Plotting_STS_Tau002_I14.png"/>
 
