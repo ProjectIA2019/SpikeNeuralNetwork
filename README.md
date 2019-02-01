@@ -17,8 +17,20 @@
 ## <a name="ancora-neurone"></a>Neurone
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/1024px-Neuron.svg.png"/>
 
+Parti del neurone:
+* Soma
+* Dendriti
+* Nucleo
+* Assone
+* Guaina Melinica
+* Terminale
 
-In questo progetto di inettligenza artificiale si è implementato un neurone con il modello di Izhikevich, in Arduino e SWI-Prolog, e successivamente si è creata una Spike Neural Network(una catena di neuroni collegato tra loro) per studiare il funzionamento di quest'ultima.
+__________________________________________________________________________________________
+
+In questo progetto di inettligenza artificiale si è implemenmtato un neurone sintetico(simile al neurone biologico) con il modello di Izhikevich, in Arduino e SWI-Prolog, e successivamente si è creata una Spike Neural Network(una catena di neuroni collegato tra loro) per studiarne il funzionamento.
+
+*Cos'è una spiking neural network?*
+Una SNN è una rete artificiale ad impulso che emula il comportamento della rete neuronale naturale.
 
 _____________________________________________________________________________________________
 
