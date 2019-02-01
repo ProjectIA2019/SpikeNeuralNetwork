@@ -1,8 +1,8 @@
 /*
  *    Pietro Rignanese & Polenta Andrea
- *    Universit‡ politecnica delle marche
+ *    Universit√† politecnica delle marche
  *    Anno 2018/2019
- *    Facolt‡ di Ingegneria informatica e dell'automazione
+ *    Facolt√† di Ingegneria informatica e dell'automazione
  *
  */
 
@@ -61,7 +61,7 @@ s('Freya','Odino').
 s('Odino','Thor').
 s('Thor','Freya').
 %Info sugli spike
-spikehelp():-
+spikehelp:-
     write("ELENCO FUNZIONI NEURONE:"), nl,
     write(" 1. snn(ts)    -->  TS:  Tonic Spiking"), nl,
     write(" 2. snn(ps)    -->  PS:  Phasic Spiking"), nl,
@@ -83,7 +83,7 @@ spikehelp():-
     write("Per lanciare il programma:"), nl,
     write(" - Scegliere la tipologia di spike tra quelle soprariportate;"), nl,
     write(" - Inserire nel lanciatore:"),nl,
-    write("           - la modalit‡,"),nl,
+    write("           - la modalit√†,"),nl,
     write("           - il neurone iniziale,"),nl,
     write("           - la corrente,"),nl,
     write("           - il quantizzatore,"),nl,
@@ -112,7 +112,7 @@ spikeControl(Neuron,_,_,_,_,_,Nlist):-
     start(NeuronS,Nlist,0).
 spikeControl(_,_,_,_,_,_,_).
 
-% Controllo sulla lista dei neuroni se il neurone considerato Ë presente
+% Controllo sulla lista dei neuroni se il neurone considerato √® presente
 listControl(Neuron,List,Nlist):-
     \+member(Neuron-_,List),
     append([Neuron-[-70,-20]],List,Nlist).
