@@ -479,7 +479,7 @@ Di seguito alcuni modelli di neuroni plottate con excel attraverso i dati elabor
             
 ________________________________________________________________________________
 
-### <a href="#ancora-conclusione"></a>Conclusioni
+### <a href="#ancora-conclusioni"></a>Conclusioni
 
 I Neuroni "Spleeèy" sono da escludere perchè non rispecchaino a pieno il comportamento del neurone biologico.
 
