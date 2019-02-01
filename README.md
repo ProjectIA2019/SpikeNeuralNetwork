@@ -478,7 +478,28 @@ Di seguito alcuni modelli di neuroni plottate con excel attraverso i dati elabor
             
 ________________________________________________________________________________
 
+### Conclusioni
+
+I Neuroni "Spleeèy" sono da escludere perchè non rispecchaino a pieno il comportamento del neurone biologico.
+
+Come possiamo notare, anche dall’esperienza in Arduino, quando la corrente indotta aumenta si ha un aumento della frequenza di scarica, cioè il numero degli spike tende ad aumentare considerando la quantizzazione(Tau) inalterata.
+Ogni tipologia di neurone corrisponde ad un andamento di tipo grafico, che varia in base ai valori assegnati, ma la corrente indotta è qualcosa che fa variare fortemente la funzione nella sua frequenza. 
+
+*Cosa succede se lasciamo la corrente inalterata e variamo il tau?*
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TS/Plotting_TS_Tau002_I14.png"/>
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/TS/Plotting_TS_Tau02_I14.png"/>
+
+
+L’andamento del grafico non cambia, ma, in questo caso, si ha un grafico più schiacciato e compatto, come se il tempo per arrivare al picco fosse più breve… ed è proprio quello che accade!
+Aumentando il tempo di quantizzazione, si hanno intervalli di tempo più ampi dove è possibile arrivare prima allo spike.
+Questo metodo potrebbe aiutare a vedere prima lo spike, qualora quest’ultimo fosse molto lontano, ma non sempre è la soluzione più giusta, perché aumentando fortemente il tau, succederebbe tutto molto in fretta falsando i valori.
+
+
 #### <a href="#ancora-indice">Torna all'indice</a>
+
+______________________________________________________________________________________
 
 ### Progetto di Intelligenza Artificiale
 Pietro Rignanese & Andrea Polenta 
