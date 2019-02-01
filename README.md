@@ -13,6 +13,7 @@
             * <a href="#ancora-plotsleep">Plotting</a>
          * <a href="#ancora-prologtrewake">Neuroni "Awake"</a>
             * <a href="#ancora-plotwake">Plotting</a>
+  * <a href="#ancora-conclusioni">5. Conclusioni</a>
 
 ## <a name="ancora-neurone"></a>Neurone
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/1024px-Neuron.svg.png"/>
@@ -478,7 +479,7 @@ Di seguito alcuni modelli di neuroni plottate con excel attraverso i dati elabor
             
 ________________________________________________________________________________
 
-### Conclusioni
+### <a href="#ancora-conclusione"></a>Conclusioni
 
 I Neuroni "Spleeèy" sono da escludere perchè non rispecchaino a pieno il comportamento del neurone biologico.
 
