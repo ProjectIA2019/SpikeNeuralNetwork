@@ -316,6 +316,12 @@ Di seguito i grafici dei neuroni "Sleepy"
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STS/Plotting_STS_Tau002_I14.png"/>
 
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STS/Plotting_STS_Tau002_I80.png"/>
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STB/Plotting_STB_Tau002_I15.png"/>
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STB/Plotting_STB_Tau002_I80.png"/>
+
 _______________________________________________________________________________________________________
 
 ### <a name="ancora-prologtrewake"></a>Catena di neuroni "Svegli"
