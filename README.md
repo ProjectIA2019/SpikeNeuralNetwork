@@ -1,4 +1,4 @@
-# Spike Neural Network
+# Spiking Neural Network
 
 ## <a name="ancora-indice"></a>Indice
 * <a href="#ancora-neurone">1. Neurone</a>
@@ -30,6 +30,7 @@ ________________________________________________________________________________
 In questo progetto di inettligenza artificiale si è implemenmtato un neurone sintetico(simile al neurone biologico) con il modello di Izhikevich, in Arduino e SWI-Prolog, e successivamente si è creata una Spike Neural Network(una catena di neuroni collegato tra loro) per studiarne il funzionamento.
 
 *Cos'è una spiking neural network?*
+
 Una SNN è una rete artificiale ad impulso che emula il comportamento della rete neuronale naturale.
 
 _____________________________________________________________________________________________
@@ -51,16 +52,25 @@ Man mano che la corrente dimuisce lo spike risulta essere meno presente.
 
 Quindi la corrente, man mano che aumenta, aumenta la fequenza di scarica(aumenta il numero dei potenziali d'azione del neurone) e, man mano che diminuisce(fino a riportare il potenziale di membrana a riposo, cioè -70mV), diminuisce la frequenza di scarica.
 
-Ecco il semplice schema, realizzato con Arduino, per verificare lo spike e il funzionamento del neurone al variare della corrente di innesco:
+Ecco lo schema, realizzato con Arduino:
 
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino_Spike_Neuron.png"/>
 
-#### [Video Arduino](https://www.youtube.com/watch?v=hH13wbqk_TM)
+#### [Video YouTube](https://www.youtube.com/watch?v=hH13wbqk_TM)
 
 ### <a name="ancora-dupneuron"></a>Catena di 2 neuroni
 
+Così come si è realizzato lo schema per un neurone, lo si è realizzato per un secondo e lo si è collegato al primo, come nello schema seguente:
+
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino_Spike_Neural_network.png"/>
+
+In questa piccola Spiking Neural Network vediamo due Arduino, dove ognuno dei quali rappresenta un neurone, collegati gtra loro a rappresentare una catena.
+Il neurone 1 manda dei segnali al neurone successivo solamente quuando avviene lo spike, quindi, il neurone 2 calcola continuamente il potenziale di membrana nel tempo con corrente che sarà identica alla corrente di sinapsi del neurone precedente, quando quest'ultimo arriva allo spike, altrimenti sarà colcolato con corrente 0.
+
+Nel modello di arduino del secondo neurone vediamo un bottone e un led: il led identifico lo spike del neurone precedente e il bottone aumenta la quantizzazione, per poter vedere prima lo spike.
+
+____________________________________________________________________________________________
 
 ### <a name="ancora-modizhikevich"></a>Mod Izhikevich's Spike Model
 
