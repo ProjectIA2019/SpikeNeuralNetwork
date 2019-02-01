@@ -314,9 +314,13 @@ In questo caso si sono salvati i dati in file `.txt` e successivamente elaborati
 
 Di seguito i grafici dei neuroni "Sleepy"
 
+##### Tonic Spiking
+
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STS/Plotting_STS_Tau002_I14.png"/>
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STS/Plotting_STS_Tau002_I80.png"/>
+
+##### Tonic Bursting
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Plotting/STB/Plotting_STB_Tau002_I15.png"/>
 
@@ -328,74 +332,133 @@ ________________________________________________________________________________
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Schema%20Neuron%20Wake.png"/>
 
-        %Spiking neural network
-        s('Freya','Odino').
-        s('Odino','Thor').
-        s('Thor','Freya').
+##### Tipologie di neurone
+         spike(ts,0.02,0.2,-65,6).
 
-        % Conrtrollo per il raggiungemento del picco
-        % da parte del poteziale di membrana
-        spikeControl(Neuron,I,Vf,Uf,C,D,Nlist) :-
-            Vf >= 30,
-            write('_____________________________________________________________'),nl,
-            write('Registrato picco del neurone '),write(Neuron),nl,nl,
-            write('Potenziale di membrana ==> '),write(Vf),write(' mV'),nl,
-            write('Recupero di membrana   ==> '),write(Uf),write(' mV'),nl,
-            write('_____________________________________________________________'),
-            nl,nl,nl,nl,
-            %sleep(2),
-            NVf = C,
-            NUf is Uf+D,
-            listUpdate(Neuron-[NVf,NUf],Nlist,Newlist),
-            s(Neuron,NeuronS),
-            start(NeuronS,Newlist,I).
-        spikeControl(Neuron,_,_,_,_,_,Nlist):-
-            s(Neuron,NeuronS),
-            NeuronS \= 'Freya',
-            start(NeuronS,Nlist,0).
-        spikeControl(_,_,_,_,_,_,_).
+         spike(ps,0.02,0.25,-65,6).
 
-        % Controllo sulla lista dei neuroni se il neurone considerato è presente
-        listControl(Neuron,List,Nlist):-
-            \+member(Neuron-_,List),
-            append([Neuron-[-70,-20]],List,Nlist).
-        listControl(_,List,List).
+         spike(tb,0.02,0.2,-50,2).
 
-        %Aggiornamento della Lista dei neuroni
-        listUpdate(Neuron-Pot,List,NewList):-
-            delete(List,Neuron-_,Nlist),
-            append([Neuron-Pot],Nlist,NewList).
+         spike(pb,0.02,0.25,-55,0.05).
 
-        %Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
-        searchNeuron(Neuron,[Neuron-[NV,NU]|_],NV,NU).
-        searchNeuron(Neuron,[_|T],NV,NU):-
-            searchNeuron(Neuron,T,NV,NU).
+         spike(mm,0.02,0.2,-55,4).
 
-        %Lanciatore
-        snn(Spike,I,Tau,InitNeuron):-
-            retractall(tau(_)),
-            retractall(initI(_)),
-            retractall(kSpike(_)),
-            retractall(initNeuron(_)),
-            assert(initNeuron(InitNeuron)),
-            assert(initI(I)),
-            assert(kSpike(Spike)),
-            assert(tau(Tau)),
-            start(InitNeuron,[],I).
+         spike(sfa,0.01,0.2,-65,8).
 
-        start(Neuron,Nlist,I):-
-            kSpike(Spike),
-            spike(Spike,A,B,C,D),
-            listControl(Neuron,Nlist,Newlist1),
-            searchNeuron(Neuron,Newlist1,Vi,Ui),
-            tau(Tau),
-            Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
-            Uf is Ui+(A*(B*Vf-Ui))*Tau,
-            listUpdate(Neuron-[Vf,Uf],Newlist1,Newlist2),
-            spikeControl(Neuron,I,Vf,Uf,C,D,Newlist2),
-            initNeuron(InitN),
-            initI(InitI),
-            start(InitN,Newlist2,InitI).
+         spike(cuno,0.02,-0.1,-55,6).
+
+         spike(cdue,0.2,0.26,-65,0).
+
+         spike(sl,0.02,0.2,-65,6).
+
+         spike(reson,0.1,0.26,-60,-1).
+         
+##### Neuroni 
+
+         %Spiking neural network
+         s('Freya','Odino').
+         s('Odino','Thor').
+         s('Thor','Freya').
+         
+##### Controllo Dello Spike
+
+         % Conrtrollo per il raggiungemento del picco
+         % da parte del poteziale di membrana
+         spikeControl(Neuron,I,Vf,Uf,C,D,Nlist) :-
+             Vf >= 30,
+             write('_____________________________________________________________'),nl,
+             write('Registrato picco del neurone '),write(Neuron),nl,nl,
+             write('Potenziale di membrana ==> '),write(Vf),write(' mV'),nl,
+             write('Recupero di membrana   ==> '),write(Uf),write(' mV'),nl,
+             write('_____________________________________________________________'),
+             nl,nl,nl,nl,
+             %sleep(2),
+             NVf = C,
+             NUf is Uf+D,
+             listUpdate(Neuron-[NVf,NUf],Nlist,Newlist),
+             s(Neuron,NeuronS),
+             start(NeuronS,Newlist,I).
+         spikeControl(Neuron,_,_,_,_,_,Nlist):-
+             s(Neuron,NeuronS),
+             NeuronS \= 'Freya',
+             start(NeuronS,Nlist,0).
+         spikeControl(_,_,_,_,_,_,_).
+         
+##### Controllo/aggiornamento lista neuroni e valori di quest'ultimi
+
+         % Controllo sulla lista dei neuroni se il neurone considerato è presente
+         listControl(Neuron,List,Nlist):-
+             \+member(Neuron-_,List),
+             append([Neuron-[-70,-20]],List,Nlist).
+         listControl(_,List,List).
+
+         %Aggiornamento della Lista dei neuroni
+         listUpdate(Neuron-Pot,List,NewList):-
+             delete(List,Neuron-_,Nlist),
+             append([Neuron-Pot],Nlist,NewList).
+
+         %Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
+         searchNeuron(Neuron,[Neuron-[NV,NU]|_],NV,NU).
+         searchNeuron(Neuron,[_|T],NV,NU):-
+             searchNeuron(Neuron,T,NV,NU).
+
+##### Predicato di lancio
+         %Lanciatore
+         %
+         %       Spike --> Tipologia di spike da lanciare
+         %           I --> Corrente di sinapsi
+         %         Tau --> Campionamento
+         %  InitNeuron --> Neurone iniziale
+         %        File --> File di destinazione su dove inserire i valori
+         %
+         snn(Spike,I,Tau,InitNeuron,File):-
+             retractall(tau(_)),
+             retractall(initI(_)),
+             retractall(kSpike(_)),
+             retractall(initNeuron(_)),
+             retractall(initFile(_)),
+             assert(initNeuron(InitNeuron)),
+             assert(initI(I)),
+             assert(kSpike(Spike)),
+             assert(tau(Tau)),
+             assert(initFile(File)),
+             start(InitNeuron,[],I).
+
+##### Controllo di inserimento in un file
+         %Controllo per l'inserimento dei valori di Vf in un file
+         controlFile(Neuron,X,Vf):-
+             initNeuron(InitNeuron),
+             Neuron \= InitNeuron,
+             write(X,Vf),
+             write(X, " , "),
+             close(X).
+         controlFile(_,X,Vf):-
+             nl(X),
+             write(X,Vf),
+             write(X, " , "),
+             close(X).
+
+##### Programma di calcolo del potenziale di membrana e recupero di quest'ultima
+         %Calcolo del Vf e Uf secondo il modello di Izhikevich
+         %
+         % start = Programma principale
+         %
+         start(Neuron,Nlist,I):-
+             kSpike(Spike),
+             spike(Spike,A,B,C,D),
+             listControl(Neuron,Nlist,Newlist1),
+             searchNeuron(Neuron,Newlist1,Vi,Ui),
+             tau(Tau),
+             Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
+             Uf is Ui+(A*(B*Vf-Ui))*Tau,
+             initFile(File),
+             open(File,append,X),
+             controlFile(Neuron,X,Vf),
+             listUpdate(Neuron-[Vf,Uf],Newlist1,Newlist2),
+             spikeControl(Neuron,I,Vf,Uf,C,D,Newlist2),
+             initNeuron(InitN),
+             initI(InitI),
+             start(InitN,Newlist2,InitI).
             
             
 #### <a name="ancora-plotwake"></a>Plotting
