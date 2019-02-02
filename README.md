@@ -76,6 +76,43 @@ Nel modello di arduino del secondo neurone vediamo due bottone, un buzzer un led
 * Il bottone più a sinistra cambia la tipologia di neurone
 * Il buzzer comincia a suonare quando si presengta lo spike del neurone considerato
 
+Collegamenti nel dettaglio:
+<table align='center'>
+  <tr align='center'>
+   <td> </td>
+   <td>Buzzer</td>
+   <td>LED Rosso</td>
+   <td>LED Verde</td>
+   <td>Bottone Mod Neurone</td>
+   <td>Bottone Potenziometro</td>
+   <td>Bottone Quantizzazione</td>
+   <td>Potenziometro</td>
+   <td>Spike</td>
+  </tr>
+  <tr align='center'>
+   <td>Arduino UNO / Neurone 1</td>
+   <td>D4</td>
+   <td>D5</td>
+   <td>D7</td>
+   <td>D2</td>
+   <td>D6</td>
+   <td>-</td>
+   <td>A1</td>  
+   <td>D8</td>
+  </tr>
+  <tr align='center'>
+   <td>Arduino UNO / Neurone 2</td>
+   <td>D7</td>
+   <td>D2</td>
+   <td>-</td>
+   <td>D6</td>
+   <td>-</td>
+   <td>D4</td> 
+   <td>-</td>
+   <td>-</td>
+  </tr>
+ </table>
+
 ____________________________________________________________________________________________
 
 ### <a name="ancora-modizhikevich"></a>Mod Izhikevich's Spike Model
