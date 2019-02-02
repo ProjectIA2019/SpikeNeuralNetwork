@@ -1,3 +1,12 @@
+/*
+  Pietro Rignanese & Andrea Polenta
+  Spiking Neural Network
+  
+  Intelligenza Artificiale
+  
+  Università Politecnica delle Marche
+*/
+
 int potentiometerPin = 0; //Pin Potenziometro A0
 int value = 0;            //Valore del potenziometro
 float tau = 0.2;          //Quantizzazione
