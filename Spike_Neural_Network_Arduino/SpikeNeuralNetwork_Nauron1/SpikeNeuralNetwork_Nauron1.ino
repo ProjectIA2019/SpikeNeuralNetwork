@@ -1,11 +1,3 @@
-/*
-  Pietro Rignanese & Andrea Polenta
-  Spike Neural Network in Arduino
-  Gennaio 2019
-  Inetlligenza artificiale
-  UNIVPM
-*/
-
 int potentiometerPin = 0; //Pin Potenziometro A0
 int value = 0;            //Valore del potenziometro
 float tau = 0.2;          //Quantizzazione
@@ -28,7 +20,7 @@ int c = -65;              //Valore di ripristino dopo il picco v
 float d = 6;              //Ripristino di u dopo il picco
 float i = 14;             //Corrente di sinapsi
 
-String OutputStr = ""; //Valori di output da accumulare per essere lettu sull'oscilloscopio
+String OutputStr = "";    //Valori di output da accumulare per essere lettu sull'oscilloscopio
 
 void setup()
 {
