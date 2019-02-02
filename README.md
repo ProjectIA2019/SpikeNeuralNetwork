@@ -114,6 +114,11 @@ Collegamenti nel dettaglio:
  </table>
 
 Sarà possibile collegare in sequenza altri Arduino, in modo da incrementare la catena di neuroni, basta dare ad ogni neurone un seganle di uscita per lo spike e collegarlo all'ingresso di un altro Arduino.
+
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Screen/screen_spiking_neural_network.png"/>
+
+A sinistra si ha il neurone 1 e a destra il neurone 2:
+Come si può vedere il neurne 2 riceve i picchi di corrente solamente quando il neurone 1 arriva allo spike, altrimenti la corrente sarà a 0, oppure calerà lentamente la corrente ricevuta dal neurone precedente fino al prossimo spike che la riporterà al suo valore effettivo.
 ____________________________________________________________________________________________
 
 ### <a name="ancora-modizhikevich"></a>Mod Izhikevich's Spike Model
