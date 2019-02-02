@@ -64,7 +64,7 @@ Ecco lo schema, realizzato con Arduino:
 
 Così come si è realizzato lo schema per un neurone, lo si è realizzato per un secondo e lo si è collegato al primo, come nello schema seguente:
 
-<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino_Spike_Neural_network.png"/>
+<img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino_Spiking_Neural_network.png"/>
 
 In questa piccola Spiking Neural Network vediamo due Arduino, dove ognuno dei quali rappresenta un neurone, collegati gtra loro a rappresentare una catena.
 Il neurone 1 manda dei segnali al neurone successivo solamente quuando avviene lo spike, quindi, il neurone 2 calcola continuamente il potenziale di membrana nel tempo con corrente che sarà identica alla corrente di sinapsi del neurone precedente, quando quest'ultimo arriva allo spike, altrimenti sarà colcolato con corrente 0.
