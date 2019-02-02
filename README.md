@@ -66,10 +66,15 @@ Così come si è realizzato lo schema per un neurone, lo si è realizzato per un
 
 <img src="https://github.com/ProjectIA2019/SpikeNeuralNetwork/blob/master/Img/Schemi/Arduino_Spiking_Neural_network.png"/>
 
-In questa piccola Spiking Neural Network vediamo due Arduino, dove ognuno dei quali rappresenta un neurone, collegati gtra loro a rappresentare una catena.
-Il neurone 1 manda dei segnali al neurone successivo solamente quuando avviene lo spike, quindi, il neurone 2 calcola continuamente il potenziale di membrana nel tempo con corrente che sarà identica alla corrente di sinapsi del neurone precedente, quando quest'ultimo arriva allo spike, altrimenti sarà colcolato con corrente 0.
+In questa piccola Spiking Neural Network vediamo due Arduino, dove ognuno dei quali rappresenta un neurone, collegati tra loro a rappresentare una catena.<br>
+Il neurone 1 manda dei segnali al neurone successivo solamente quando avviene lo spike, quindi, il neurone 2 calcola continuamente il potenziale di membrana nel tempo con corrente che sarà identica alla corrente di sinapsi del neurone precedente, quando quest'ultimo arriva allo spike, altrimenti sarà colcolato con corrente 0.<br>
+La corrente del neurone 2, una volta percepito lo spike del primo neurone, fa salire la sua corrente e la fa calare pian piano quando lo spike del primo neurone finisce per poi farla ritornare su quando si ripresenta lo spike.
 
-Nel modello di arduino del secondo neurone vediamo un bottone e un led: il led identifica lo spike del neurone precedente e il bottone aumenta la quantizzazione(aumenta il valore di tau), per poter vedere prima lo spike.
+Nel modello di arduino del secondo neurone vediamo due bottone, un buzzer un led: 
+* Il led identifica lo spike del neurone precedente
+* Il bottone più a destra aumenta la quantizzazione(aumenta il valore di tau), per poter vedere prima lo spike
+* Il bottone più a sinistra cambia la tipologia di neurone
+* Il buzzer comincia a suonare quando si presengta lo spike del neurone considerato
 
 ____________________________________________________________________________________________
 
