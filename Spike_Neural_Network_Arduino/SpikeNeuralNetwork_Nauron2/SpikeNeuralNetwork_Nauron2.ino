@@ -1,3 +1,12 @@
+/*
+  Pietro Rignanese & Andrea Polenta
+  Spiking Neural Network
+  
+  Intelligenza Artificiale
+  
+  Università Politecnica delle Marche
+*/
+
 float a = 0.02;           //Scala temporale di u
 float b = 0.2;            //Sensibilità di recupero
 int c = -65;              //Valore di ripristino dopo il picco v
@@ -6,9 +15,9 @@ float i = 14;             //Corrente di sinapsi
 
 float CorrI = 0;          //Corrente di sinapsi, viene salvata in un'altra variabile per farla calare lentamente
 
-float v = -70;
-float u = -20;
-float tau = 0.02;
+float v = -70;            //Potenziale di membrana a riposo
+float u = -20;            //Recupero di membrana a riposo
+float tau = 0.02;         //Quantizzazione
 
 int SPIKE = 2;            //Spike del neurone precedente
 int MOD_TAU = 4;          //Bottone per la modifica del tau [0.02,0.2,1,2]
@@ -48,7 +57,7 @@ void loop()
     }
     delay(150);
 
-    if(mod == 0)
+  if(mod == 0)
   {
     Serial.println("Tonic Spiking");
     a = 0.02; //Scala temporale di u
