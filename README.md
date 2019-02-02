@@ -113,6 +113,7 @@ Collegamenti nel dettaglio:
   </tr>
  </table>
 
+Sarà possibile collegare in sequenza altri Arduino, in modo da incrementare la catena di neuroni, basta dare ad ogni neurone un seganle di uscita per lo spike e collegarlo all'ingresso di un altro Arduino.
 ____________________________________________________________________________________________
 
 ### <a name="ancora-modizhikevich"></a>Mod Izhikevich's Spike Model
