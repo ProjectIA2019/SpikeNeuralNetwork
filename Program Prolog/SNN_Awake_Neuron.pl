@@ -60,6 +60,7 @@ spike(reson,0.1,0.26,-60,-1).
 s('Freya','Odino').
 s('Odino','Thor').
 s('Thor','Freya').
+
 %Info sugli spike
 spikehelp:-
     write("ELENCO FUNZIONI NEURONE:"), nl,
@@ -90,8 +91,8 @@ spikehelp:-
     write("           - il file di destinazione."),nl,nl,
     write("ESEMPIO: snn(ts,15,0.2,'C:/Desktop/nome.txt') ").
 
-% Conrtrollo per il raggiungemento del picco
-% da parte del poteziale di membrana
+% Conrtrollo per il raggiungemento del picco da parte del poteziale di membrana
+    % Caso in cui si rileva il picco
 spikeControl(Neuron,I,Vf,Uf,C,D,Nlist) :-
     Vf >= 30,
     write('_____________________________________________________________'),nl,
@@ -106,29 +107,39 @@ spikeControl(Neuron,I,Vf,Uf,C,D,Nlist) :-
     listUpdate(Neuron-[NVf,NUf],Nlist,Newlist),
     s(Neuron,NeuronS),
     start(NeuronS,Newlist,I).
+    
+    % Caso in cui non si rileva il picco e il neurone successivo non è quello iniziale
+    
 spikeControl(Neuron,_,_,_,_,_,Nlist):-
     s(Neuron,NeuronS),
-    NeuronS \= 'Freya',
+    initNeuron(InitNeuron),
+    NeuronS \= InitNeuron,
     start(NeuronS,Nlist,0).
+    
+    % Caso in cui non si rileva il picco e il neurone successivo è quello iniziale
+    
 spikeControl(_,_,_,_,_,_,_).
 
 % Controllo sulla lista dei neuroni se il neurone considerato è presente
+
 listControl(Neuron,List,Nlist):-
     \+member(Neuron-_,List),
     append([Neuron-[-70,-20]],List,Nlist).
 listControl(_,List,List).
 
-%Aggiornamento della Lista dei neuroni
+% Aggiornamento della Lista dei neuroni
+
 listUpdate(Neuron-Pot,List,NewList):-
     delete(List,Neuron-_,Nlist),
     append([Neuron-Pot],Nlist,NewList).
 
-%Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
+% Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
+
 searchNeuron(Neuron,[Neuron-[NV,NU]|_],NV,NU).
 searchNeuron(Neuron,[_|T],NV,NU):-
     searchNeuron(Neuron,T,NV,NU).
 
-%Lanciatore
+% Lanciatore
 %
 %       Spike --> Tipologia di spike da lanciare
 %           I --> Corrente di sinapsi
@@ -149,7 +160,7 @@ snn(Spike,I,Tau,InitNeuron,File):-
     assert(initFile(File)),
     start(InitNeuron,[],I).
 
-%Controllo per l'inserimento dei valori di Vf in un file
+% Controllo per l'inserimento dei valori di Vf in un file
 controlFile(Neuron,X,Vf):-
     initNeuron(InitNeuron),
     Neuron \= InitNeuron,
@@ -162,7 +173,7 @@ controlFile(_,X,Vf):-
     write(X, " , "),
     close(X).
 
-%Calcolo del Vf e Uf secondo il modello di Izhikevich
+% Calcolo del Vf e Uf secondo il modello di Izhikevich
 %
 % start = Programma principale
 %
