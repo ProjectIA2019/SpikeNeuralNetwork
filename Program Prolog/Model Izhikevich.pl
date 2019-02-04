@@ -10,6 +10,8 @@
 %
 /*  Implementazione algoritmi base per la simulazione di una Spike Neural Network
  *                  utilizzando il modello di Izhikevich.
+ * 
+ *  Implementazione del modello di neurone di E.Izhikevich.
  *
  * TIPOLOGIE:
  *
@@ -76,30 +78,49 @@ spikehelp:-
     write("16. snn(ib) -->  IB:  Inhibition-induce Bursting"), nl,
     nl.
 
-%Predicato per fallimento iniziale di start()
+%Predicato per fallimento iniziale di start() 
+
 nSpike(nil).
 
-% Conrtrollo per il raggiungemento del picco
-% da parte del poteziale di membrana
+% Conrtrollo per il raggiungemento del picc da parte del poteziale di membrana
+
+% Vf ===> Potenziale di membrana
+% Uf ===> Recupero di membrana
+% C ===> Costante C
+% D ===> Costante D
+% NVf ===> Nuovo potenziale di membrana dopo il picco
+% NUf ===> Nuovo recupero di membrana dopo il picco
+
 spikeControl(Vf,Uf,C,D,NVf,NUf) :-
-    Vf >= 30,
+    Vf >= 30, 
     assert(nSpike(Vf)),
     write('Picco Vf: '),
     write(Vf),
     write(' mV'),nl,nl,nl,nl,
     NVf = C,
     NUf = Uf+D.
+    
 spikeControl(Vf,Uf,_,_,Vf,Uf).
 
-%Lanciatore
+% Lanciatore
+
 snn(Spike):-
     start(Spike,-70,-20,0,0.02,1).
 
-%Implementazione SNN
+%Attivazione Neurone
+
+% Clausola per bloccare l'esecuzione ogni volta che arriviamo ad un picco
+% Vf ===> Tensione di membrana finale
 start(_,_,_,Vf,_,_):-
     nSpike(Vf),
     retractall(nSpike(_)).
-
+ 
+% Attivazione del neurone
+% Spike ===> tipologia del neurone
+% Vi ===> Tensione di membrana iniziale
+% Ui ===> Recupero di membrana iniizale
+% Tau ===> Valore di campionamento
+% Iter ===> Contatore per contare le iterazioni
 start(Spike,Vi,Ui,_,Tau,Iter):-
     spike(Spike,A,B,C,D,I),
     Vf is Vi+(0.04*Vi*Vi+5*Vi+140-Ui+I)*Tau,
