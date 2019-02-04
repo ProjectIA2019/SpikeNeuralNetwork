@@ -57,7 +57,7 @@ spike(sl,0.02,0.2,-65,6).
 
 spike(reson,0.1,0.26,-60,-1).
 
-%Info sugli spike
+% Info sugli spike
 spikehelp:-
     write("ELENCO FUNZIONI NEURONE:"), nl,
     write(" 1. snn(ts) -->  TS:  Tonic Spiking"), nl,
@@ -78,12 +78,12 @@ spikehelp:-
     write("16. snn(ib) -->  IB:  Inhibition-induce Bursting"), nl,
     nl.
 
-%Spiking neural network
+% Spiking neural network
 s('Freya','Odino').
 s('Odino','Thor').
 s('Thor','Freya').
 
-%Inizializzazione lista dei neuroni presenti sulla SNN
+% Inizializzazione lista dei neuroni presenti sulla SNN
 initNrnsList(InitNeuron,InitList,List):-
     listControl(InitNeuron,InitList,NewList),
     InitList \= NewList,
@@ -114,17 +114,17 @@ listControl(Neuron,List,Nlist):-
     append([Neuron-[-70,-20]],List,Nlist).
 listControl(_,List,List).
 
-%Aggiornamento della Lista dei neuroni
+% Aggiornamento della Lista dei neuroni
 listUpdate(Neuron-Pot,List,NewList):-
     delete(List,Neuron-_,Nlist),
     append([Neuron-Pot],Nlist,NewList).
 
-%Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
+% Prelevo il neurone considerato dalla lista, con i rispettivi potenziali
 searchNeuron(Neuron,[Neuron-[NV,NU]|_],NV,NU).
 searchNeuron(Neuron,[_|T],NV,NU):-
     searchNeuron(Neuron,T,NV,NU).
 
-%Controllo per l'inserimento dei valori di Vf in un file
+% Controllo per l'inserimento dei valori di Vf in un file
 controlFile(X,[_-[NV,_]|Tail]):-
     write(X,NV),
     write(X, " , "),
@@ -153,7 +153,7 @@ start(Neuron,NrnsList):-
     start(InitNeuron,Newlist).
 
 
-%Lanciatore
+% Lanciatore
 %
 %       Spike --> Tipologia di spike da lanciare
 %           I --> Corrente di sinapsi
